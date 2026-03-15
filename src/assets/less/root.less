@@ -13,18 +13,20 @@
 @media only screen and (min-width: 0px) {
 	/* All elements in the library derive their variables and base styles from this central sheet, simplifying site-wide edits. For instance, if you want to modify how your h2's appear across the site, you just update it once in the global styles, and the changes apply everywhere. */
 	:root {
-		--primary: #ff6a3e;
+		--primary: #8C201E;
 		--primaryLight: #ffba43;
-		--secondary: #ffba43;
+		--secondary: #AB8756;
 		--secondaryLight: #ffba43;
 		--headerColor: #1a1a1a;
 		--bodyTextColor: #4e4b66;
 		--bodyTextColorWhite: #fafbfc;
+		--sectionColor: #f7f7f7;
 
 		/* Dark Mode Styles */
-		--dark: #082032;
-		--medium: #2c394b;
-		--accent: #334756;
+        --dark: #121212;
+        --medium: #282828;
+        --accent: #404040;
+        --bodyTextColorWhite: #fafbfc;
 
 		/* 13px - 16px */
 		--topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);
@@ -34,8 +36,8 @@
 		/* 60px - 100px top and bottom */
 		--sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;
 
-		--headerFont: "Roboto", Arial, sans-serif;
-		--bodyFont: "Roboto", Arial, sans-serif;
+		--headerFont: "Gochi Hand", Arial, sans-serif;
+		--bodyFont: "Maven Pro", Arial, sans-serif;
 	}
 
 	html,
@@ -58,17 +60,45 @@
 		padding: 0;
 	}
 
+	/* you can copy and paste this into your global stylesheet to be used everywhere there's a cs-topper in your site */
+
 	.cs-topper {
-		font-size: var(--topperFontSize);
+		font-size: (13/16rem);
+		font-weight: 900;
 		line-height: 1.2em;
-		text-transform: uppercase;
 		text-align: inherit;
-		letter-spacing: 0.1em;
-		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.2em;
+		max-width: fit-content;
+		margin-bottom: (4/16rem);
+		padding: clamp(0.25rem, 0.6vw, 0.5rem) clamp(0.75rem, 1vw, 1rem);
 		color: var(--primary);
-		margin-bottom: 0.25rem;
-		display: block;
-	}
+		display: flex;
+		align-items: center;
+		gap: clamp(0.25rem, 0.6vw, 0.625rem);
+		position: relative;
+		z-index: 1;
+
+		&:before {
+			content: "";
+			width: 100%;
+			height: 100%;
+			background-color: var(--secondary);
+			opacity: 0.1;
+			border-radius: (100/16rem);
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: -1;
+		}
+
+		img {
+			display: block;
+			width: clamp(1rem, 2vw, 1.25rem);
+			height: auto;
+		}
+	}              
 
 	.cs-title {
 		font-size: var(--headerFontSize);
@@ -103,96 +133,46 @@
 		opacity: 0;
 	}
 
-	// Buttons - can be replaced using CodeStitch's "Button" Stitches. Make sure to clear the default .cs-button-solid/outline styles from any new stitches you place.
 	.cs-button-solid {
-		z-index: 1;
-		position: relative;
-		display: inline-block;
-		background-color: var(--primary);
-		width: auto;
-		padding: (16/16rem) (32/16rem);
-		text-decoration: none;
-		text-transform: uppercase;
-		font-size: (16/16rem);
-		line-height: (16/16em);
-		font-weight: bold;
-		border-radius: (4/16rem);
-		overflow: hidden;
+            font-size: (16/16rem);
+            line-height: 3.5em;
+            text-decoration: none;
+            font-weight: 700;
+            overflow: hidden;
+            width: auto;
+            margin: 0;
+            color: #fff;
+            padding: 0 (48/16rem);
+            border-radius: (100/16rem);
+            overflow: hidden;
+            background-color: var(--primary);
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+            transition: color 0.3s;
 
-		// Transition Properties
-		color: var(--bodyTextColorWhite);
-		transition: color 0.3s;
-		transition-delay: 0.1s;
-		text-align: center;
+            &:before {
+                content: "";
+                position: absolute;
+                display: block;
+                height: 100%;
+                width: 0%;
+                background: #1a1a1a;
+                opacity: 1;
+                top: 0;
+                left: 0;
+                z-index: -1;
+                transition: width 0.3s;
+            }
 
-		&:hover {
-			color: #fff;
+            &:hover {
+                color: var(--primary);
+            }
 
-			&:before {
-				width: 100%;
-			}
-		}
-
-		&:before {
-			z-index: -1;
-			position: absolute;
-			top: 0;
-			left: 0;
-			content: "";
-			opacity: 1;
-			display: block;
-			background-color: #000;
-			height: 100%;
-
-			//Transition properties
-			width: 0;
-			transition: width 0.3s;
-		}
-	}
-
-	.cs-button-outline {
-		z-index: 1;
-		position: relative;
-		display: inline-block;
-		width: auto;
-		padding: (16/16rem) (32/16rem);
-		text-decoration: none;
-		text-transform: uppercase;
-		font-size: (16/16rem);
-		line-height: (16/16em);
-		font-weight: bold;
-		border: 2px solid #000;
-
-		// Transition Properties
-		color: #000;
-		transition: color 0.3s;
-		transition-delay: 0.1s;
-		text-align: center;
-
-		&:hover {
-			color: #fff;
-
-			&:before {
-				width: 100%;
-			}
-		}
-
-		&:before {
-			z-index: -1;
-			position: absolute;
-			top: 0;
-			left: 0;
-			content: "";
-			opacity: 1;
-			display: block;
-			background-color: #000;
-			height: 100%;
-
-			//Transition properties
-			width: 0;
-			transition: width 0.3s;
-		}
-	}
+            &:hover:before {
+                width: 100%;
+            }
+        }
 
 	// Utilities - small classes useful in various common situations
 	.cs-color {
@@ -252,6 +232,7 @@
 		font-family: var(--headerFont);
 		line-height: 1.2em;
 		color: var(--headerColor);
+		text-transform: uppercase;
 	}
 
 	p,
@@ -297,30 +278,58 @@
 @media only screen and (min-width: 0px) {
 	// Grab your fonts to locally host from https://gwfh.mranftl.com/fonts
 	/* roboto-regular - latin */
+	/* dancing-script-700 - latin */
 	@font-face {
+		font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+		font-family: 'Dancing Script';
 		font-style: normal;
-		font-family: "Roboto";
-		font-weight: 400;
-		font-display: swap;
-		src: local(""), url("/assets/fonts/roboto-v29-latin-regular.woff2") format("woff2"), /* Chrome 26+, Opera 23+, Firefox 39+ */ url("/assets/fonts/roboto-v29-latin-regular.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-	}
-
-	/* roboto-700 - latin */
-	@font-face {
-		font-style: normal;
-		font-family: "Roboto";
 		font-weight: 700;
-		font-display: swap;
-		src: local(""), url("/assets/fonts/roboto-v29-latin-700.woff2") format("woff2"), /* Chrome 26+, Opera 23+, Firefox 39+ */ url("/assets/fonts/roboto-v29-latin-700.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+		src: url('/assets/fonts/dancing-script-v29-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 	}
 
-	/* roboto-900 - latin */
+	/* caveat-700 - latin */
 	@font-face {
+		font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+		font-family: 'Caveat';
 		font-style: normal;
-		font-family: "Roboto";
-		font-weight: 900;
-		font-display: swap;
-		src: local(""), url("/assets/fonts/roboto-v29-latin-900.woff2") format("woff2"), /* Chrome 26+, Opera 23+, Firefox 39+ */ url("/assets/fonts/roboto-v29-latin-900.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+		font-weight: 700;
+		src: url('/assets/fonts/caveat-v23-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+	}
+
+	/* arizonia-regular - latin */
+	@font-face {
+		font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+		font-family: 'Arizonia';
+		font-style: normal;
+		font-weight: 400;
+		src: url('/assets/fonts/arizonia-v23-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+	}
+
+	/* gochi-hand-regular - latin */
+		@font-face {
+		font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+		font-family: 'Gochi Hand';
+		font-style: normal;
+		font-weight: 400;
+		src: url('/assets/fonts/gochi-hand-v25-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+	}
+
+	/* maven-pro-regular - latin */
+	@font-face {
+		font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+		font-family: 'Maven Pro';
+		font-style: normal;
+		font-weight: 400;
+		src: url('/assets/fonts/maven-pro-v40-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+	}
+
+	/* maven-pro-700 - latin */
+	@font-face {
+		font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+		font-family: 'Maven Pro';
+		font-style: normal;
+		font-weight: 700;
+		src: url('/assets/fonts/maven-pro-v40-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 	}
 }
 
@@ -345,37 +354,45 @@
 		}
 	}
 
+	#cs-navigation {
+		&.cs-active {
+			#dark-mode-toggle {
+				.cs-moon {
+					fill: #fff;
+				}
+			}
+		}
+	}
+
 	#dark-mode-toggle {
 		width: (48/16rem);
 		height: (48/16rem);
 		padding: 0;
 		background: transparent;
+		overflow: hidden;
 		border: none;
 		display: block;
 		position: absolute;
-		top: (10/16rem);
 		right: (70/16rem);
 		z-index: 1000;
-		overflow: hidden;
 
 		img,
 		svg {
 			width: (20/16rem);
 			height: (20/16rem);
+			pointer-events: none;
 			//center image inside button
 			position: absolute;
 			top: 50%;
 			left: 50%;
 			transform: translate(-50%, -50%);
-			pointer-events: none;
 		}
 
 		.cs-moon {
 			z-index: 2;
 			// Transition properties
 			transition: transform 0.3s, opacity 0.3s;
-
-			// fill: yellow; --> uncomment to change the color of the moon if needed
+			fill: #fff; 
 		}
 
 		.cs-sun {
@@ -393,8 +410,8 @@
 	#dark-mode-toggle {
 		margin: 0;
 		position: relative;
-		top: auto;
 		right: auto;
+		bottom: auto;
 		transform: none;
 
 		&:hover {
@@ -407,11 +424,25 @@
 <---     Mobile Navigation      -->
 <--- -------------------------- -*/
 
-/* Mobile - 1023.5px */
+/* Mobile - 1023px */
 @media only screen and (max-width: 1023.5px) {
 	body {
 		&.cs-open {
 			overflow: hidden;
+			#cs-navigation {
+				&:after {
+					width: 100%;
+					opacity: 1;
+				}
+			}
+		}
+
+		&.scroll {
+			#cs-navigation {
+				&:after {
+					width: 100%;
+				}
+			}
 		}
 	}
 
@@ -419,58 +450,72 @@
 		width: 100%;
 		/* prevents padding and border from affecting height and width */
 		box-sizing: border-box;
-		padding: (12/16rem) (16/16rem);
-		background-color: #fff;
-		box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+		border-bottom: 1px solid #484848;
 		position: fixed;
 		z-index: 10000;
 
 		&:before {
-			/* black blurred overlay */
+			/* mobile nav overlay on open */
 			content: "";
-			width: 0%;
-			height: 100vh;
+			width: 100%;
+			height: 0vh;
 			background: rgba(0, 0, 0, 0.6);
 			opacity: 0;
 			display: block;
 			position: absolute;
 			top: 100%;
 			right: 0;
-			z-index: -11;
-			transition: width 0.5s, opacity 0.3s;
+			z-index: -1100;
+			transition: height 0.5s, opacity 0.5s;
 			-webkit-backdrop-filter: blur(10px);
 			backdrop-filter: blur(10px);
 		}
 
+		&:after {
+			/* on scroll overlay */
+			content: "";
+			width: 0%;
+			height: 100%;
+			background: var(--primary);
+			opacity: 0.8;
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: -1;
+			transition: width 0.3s, opacity 0.3s;
+		}
+
 		&.cs-active {
 			&:before {
-				width: 100%;
+				height: 150vh;
 				opacity: 1;
 			}
-
 			.cs-ul-wrapper {
 				opacity: 1;
-				transform: scaleX(1);
-				transition-delay: 0.2s;
+				transform: scaleY(1);
+				transition-delay: 0.15s;
 			}
 
 			.cs-li {
 				opacity: 1;
-				transform: translateX(0);
+				transform: translateY(0);
 			}
 		}
 
 		.cs-container {
 			width: 100%;
+			/* prevents padding and border from affecting height and width */
+			box-sizing: border-box;
+			padding: (16/16rem);
 			display: flex;
 			justify-content: flex-end;
 			align-items: center;
 		}
 
 		.cs-logo {
-			width: 40%;
-			max-width: (146/16rem);
-			height: 100%;
+			width: (147/16rem);
+			height: auto;
 			margin: 0 auto 0 0;
 			/* prevents padding and border from affecting height and width */
 			box-sizing: border-box;
@@ -485,22 +530,19 @@
 				height: 100%;
 				/* ensures the image never overflows the container. It stays contained within it's width and height and expands to fill it then stops once it reaches an edge */
 				object-fit: contain;
-				/* places the image to the left edge of the parent */
-				object-position: left;
 			}
 		}
 
 		.cs-toggle {
-			/* 44px - 48px */
-			width: clamp(2.75rem, 6vw, 3rem);
-			height: clamp(2.75rem, 6vw, 3rem);
+			width: (56/16rem);
+			height: (56/16rem);
 			margin: 0 0 0 auto;
-			background-color: transparent;
+			background-color: var(--primary);
 			border: none;
-			border-radius: (4/16rem);
 			display: flex;
 			justify-content: center;
 			align-items: center;
+			border-radius: 0.2rem;
 		}
 
 		.cs-active {
@@ -524,15 +566,14 @@
 		.cs-box {
 			/* 24px - 28px */
 			width: clamp(1.5rem, 2vw, 1.75rem);
-			/* 14px - 16px */
-			height: clamp(0.875rem, 1.5vw, 1rem);
+			height: (16/16rem);
 			position: relative;
 		}
 
 		.cs-line {
 			width: 100%;
 			height: 2px;
-			background-color: #1a1a1a;
+			background-color: #fafbfc;
 			border-radius: 2px;
 			position: absolute;
 			left: 50%;
@@ -563,46 +604,55 @@
 			bottom: 0;
 			transition: bottom 0.3s, opacity 0.3s;
 		}
+	}
+}
 
+/*-- -------------------------- -->
+<---   Mobile Navigation Menu   -->
+<--- -------------------------- -*/
+
+/* Small Desktop - 1024px */
+@media only screen and (max-width: 1023.5px) {
+	#cs-navigation {
 		.cs-ul-wrapper {
-			height: 100vh;
-			background-color: #fff;
-			box-shadow: inset rgba(0, 0, 0, 0.2) 0px 8px 24px;
+			width: 100%;
+			height: auto;
+			padding-bottom: (48/16rem);
 			opacity: 0;
+			background-color: #1a1a1a;
+			box-shadow: inset rgba(0, 0, 0, 0.2) 0px 8px 24px;
+			overflow: hidden;
 			position: absolute;
 			top: 100%;
-			right: 0;
-			left: auto;
+			left: 0;
 			z-index: -1;
-			overflow: hidden;
-			transform: scaleX(0);
+			transform: scaleY(0);
+			transform-origin: top;
 			transition: transform 0.4s, opacity 0.3s;
-			transform-origin: top right;
 		}
 
 		.cs-ul {
-			width: auto;
-			min-width: 40%;
-			height: 65vh;
 			margin: 0;
-			/* 28px - 40px */
-			padding: (48/16rem) clamp(1.75rem, 3vw, 2.5rem) (32/16rem) (70/16rem);
-			display: flex;
-			flex-direction: column;
-			justify-content: flex-start;
-			align-items: flex-end;
-			gap: (20/16rem);
+			padding: (48/16rem) 0 0 0;
+			width: 100%;
+			height: auto;
+			max-height: 65vh;
 			overflow: scroll;
+			display: flex;
+			justify-content: flex-start;
+			flex-direction: column;
+			align-items: center;
+			gap: (20/16rem);
 		}
 
 		.cs-li {
-			text-align: right;
-			list-style: none;
 			width: 100%;
+			text-align: center;
+			list-style: none;
 			margin-right: 0;
-			opacity: 0;
 			/* transition from these values */
-			transform: translateX(-2.5rem);
+			transform: translateY(-4.375rem);
+			opacity: 0;
 			transition: transform 0.6s, opacity 0.9s;
 
 			&:nth-of-type(1) {
@@ -632,6 +682,18 @@
 			&:nth-of-type(9) {
 				transition-delay: 0.45s;
 			}
+			&:nth-of-type(10) {
+				transition-delay: 0.5s;
+			}
+			&:nth-of-type(11) {
+				transition-delay: 0.55s;
+			}
+			&:nth-of-type(12) {
+				transition-delay: 0.6s;
+			}
+			&:nth-of-type(13) {
+				transition-delay: 0.65s;
+			}
 		}
 
 		.cs-li-link {
@@ -640,28 +702,16 @@
 			line-height: 1.2em;
 			text-decoration: none;
 			margin: 0;
-			padding: (4/16rem);
-			color: var(--headerColor);
+			color: var(--bodyTextColorWhite);
 			display: inline-block;
 			position: relative;
 
-			&:before {
-				/* active state underline */
-				content: "";
-				width: 100%;
-				height: 1px;
-				background: currentColor;
-				opacity: 1;
-				display: none;
-				position: absolute;
-				bottom: (-2/16rem);
-				left: 0;
+			&.cs-active {
+				color: var(--secondary);
 			}
 
-			&.cs-active {
-				&:before {
-					display: block;
-				}
+			&:hover {
+				color: var(--secondary);
 			}
 		}
 
@@ -671,64 +721,42 @@
 	}
 }
 
-/* Dark Mode */
-@media only screen and (max-width: 1023.5px) {
-	body.dark-mode {
-		#cs-navigation {
-			background-color: var(--dark);
-
-			.cs-logo {
-				/* makes it white */
-				filter: grayscale(1) brightness(1000%);
-			}
-
-			.cs-line {
-				background-color: #fff;
-			}
-
-			.cs-ul-wrapper {
-				background-color: var(--medium);
-			}
-
-			.cs-li-link {
-				color: var(--bodyTextColorWhite);
-			}
-		}
-	}
-}
-
 /*-- -------------------------- -->
 <---     Navigation Dropdown    -->
 <--- -------------------------- -*/
 
-/* Mobile - 1023.5px */
+/* Mobile - 1023px */
 @media only screen and (max-width: 1023.5px) {
 	#cs-navigation {
+		.cs-li {
+			text-align: center;
+			width: 100%;
+			display: block;
+		}
+
 		.cs-dropdown {
-			color: var(--bodyTextColorWhite);
 			position: relative;
+			color: var(--bodyTextColorWhite);
 
 			.cs-dropdown-toggle {
 				/* Reset default button styles */
 				background: none;
 				border: none;
-				font-family: inherit;
 				text-align: inherit;
 				cursor: pointer;
 				/* Remove any default focus styles */
 				-webkit-appearance: none;
 				-moz-appearance: none;
 				appearance: none;
+				padding: 0.25rem;
 			}
-
 			&.cs-active {
 				.cs-drop-ul {
 					height: auto;
-					margin: (12/16rem) 0 0 0;
-					padding: (24/16rem);
 					opacity: 1;
 					visibility: visible;
-					transform: scale(1);
+					margin: (12/16rem) 0 0 0;
+					padding: (12/16rem) 0;
 				}
 
 				.cs-drop-link {
@@ -755,24 +783,20 @@
 			width: 100%;
 			height: 0;
 			margin: 0;
-			box-sizing: border-box;
-			padding: 0 (24/16rem) 0 (24/16rem);
+			padding: 0;
 			background-color: var(--primary);
-			opacity: 0;
-			display: flex;
-			visibility: hidden;
-			flex-direction: column;
-			justify-content: flex-start;
-			align-items: flex-end;
-			gap: (12/16rem);
 			overflow: hidden;
-			transform: scale(0);
-			transition: padding 0.3s, margin 0.3s, height 0.3s, opacity 0.3s, transform 0.3s, visibility 0.3s;
-			transform-origin: top right;
+			opacity: 0;
+			visibility: hidden;
+			display: flex;
+			justify-content: flex-start;
+			flex-direction: column;
+			align-items: center;
+			gap: (12/16rem);
+			transition: padding 0.3s, margin 0.3s, height 0.3s, opacity 0.3s, visibility 0.3s;
 		}
 
 		.cs-drop-li {
-			text-align: inherit;
 			list-style: none;
 		}
 
@@ -781,6 +805,7 @@
 				/* 14px - 16px */
 				font-size: clamp(0.875rem, 2vw, 1.25rem);
 				color: #fff;
+				padding: 0.25rem;
 			}
 		}
 	}
@@ -796,7 +821,6 @@
 				/* Reset default button styles */
 				background: none;
 				border: none;
-				font-family: inherit;
 				text-align: inherit;
 				cursor: pointer;
 				/* Remove any default focus styles */
@@ -808,11 +832,10 @@
 			&:hover,
 			&.cs-active {
 				cursor: pointer;
-
 				.cs-drop-ul {
+					transform: scaleY(1);
 					opacity: 1;
 					visibility: visible;
-					transform: scaleY(1);
 				}
 
 				.cs-drop-li {
@@ -832,30 +855,30 @@
 			min-width: (200/16rem);
 			margin: 0;
 			padding: 0;
-			background-color: #fff;
-			box-shadow: rgba(149, 157, 165, 0.2) 0px 10px 16px;
+			background-color: #1a1a1a;
+			overflow: hidden;
 			opacity: 0;
-			border-bottom: 5px solid var(--primary);
 			visibility: hidden;
+			box-shadow: rgba(149, 157, 165, 0.2) 0px 10px 16px;
+			border-bottom: 5px solid var(--primary);
 			/* if you have 8 or more links in your dropdown nav, uncomment the columns property to make the list into 2 even columns. Change it to 3 or 4 if you need extra columns. Then remove the transition delays on the cs-drop-li so they don't have weird scattered animations */
 			// columns: 2;
 			position: absolute;
-			top: 100%;
-			z-index: -100;
-			overflow: hidden;
+			top: calc(100% - 2px);
+			z-index: 100;
 			transform: scaleY(0);
-			transition: transform 0.3s, visibility 0.3s, opacity 0.3s;
 			transform-origin: top;
+			transition: transform 0.3s, visibility 0.3s, opacity 0.3s;
 		}
 
 		.cs-drop-li {
+			list-style: none;
 			font-size: (16/16rem);
 			text-decoration: none;
-			list-style: none;
+			opacity: 0;
 			width: 100%;
 			height: auto;
-			color: var(--bodyTextColor);
-			opacity: 0;
+			color: var(--bodyTextColorWhite);
 			display: block;
 			transform: translateY(-0.625rem);
 			transition: opacity 0.6s, transform 0.6s;
@@ -904,25 +927,23 @@
 		.cs-li-link {
 			&.cs-drop-link {
 				font-size: (16/16rem);
+				white-space: nowrap;
 				line-height: 1.5em;
 				text-decoration: none;
-				white-space: nowrap;
 				width: 100%;
+				padding: (12/16rem);
 				/* prevents padding and border from affecting height and width */
 				box-sizing: border-box;
-				padding: (12/16rem);
-				color: var(--bodyTextColor);
-				background-color: #f7f7f7;
-				outline: none;
+				color: var(--bodyTextColorWhite);
 				display: block;
 				transition: color 0.3s, background-color 0.3s;
 
 				&:hover {
-					background-color: #f0f0f0;
+					color: var(--primary);
+					background-color: #f7f7f7;
 				}
 
 				&:focus-visible {
-					outline: 2px solid var(--primary);
 					outline-offset: -2px;
 				}
 
@@ -934,31 +955,6 @@
 	}
 }
 
-/* Dark Mode */
-@media only screen and (min-width: 0px) {
-	body.dark-mode {
-		#cs-navigation {
-			.cs-drop-ul {
-				background-color: var(--dark);
-			}
-
-			.cs-li-link {
-				&.cs-drop-link {
-					background-color: var(--medium);
-
-					&:hover {
-						background-color: var(--light);
-					}
-				}
-			}
-
-			.cs-drop-icon {
-				/* turns it white */
-				filter: grayscale(1) brightness(1000%);
-			}
-		}
-	}
-}
 
 /*-- -------------------------- -->
 <---     Desktop Navigation     -->
@@ -966,24 +962,54 @@
 
 /* Small Desktop - 1024px */
 @media only screen and (min-width: 1024px) {
+	body {
+		&.scroll {
+			#cs-navigation {
+				&:after {
+					height: 100%;
+				}
+			}
+		}
+	}
+
 	#cs-navigation {
 		width: 100%;
 		/* prevents padding and border from affecting height and width */
 		box-sizing: border-box;
-		padding: 0 (16/16rem);
-		background-color: #fff;
-		box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+		padding: 0;
+		border: 1px solid #484848;
 		position: fixed;
 		z-index: 10000;
+
+		&:after {
+			/* on scroll overlay */
+			content: "";
+			width: 100%;
+			height: 0%;
+			background: var(--primary);
+			opacity: 0.8;
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: -1;
+			transition: height 0.3s, opacity 0.3s;
+		}
 
 		.cs-container {
 			width: 100%;
 			max-width: (1280/16rem);
+			/* same height as the cs-ul-wrapper */
+			height: (93/16rem);
 			margin: auto;
+			/* prevents padding from affectin gheight */
+			box-sizing: border-box;
+			padding: 0 (16/16rem);
 			display: flex;
 			justify-content: flex-end;
 			align-items: center;
 			gap: (24/16rem);
+			position: relative;
 		}
 
 		.cs-toggle {
@@ -992,8 +1018,8 @@
 
 		.cs-logo {
 			width: 18.4%;
-			max-width: (350/16rem);
-			height: (65/16rem);
+			max-width: (197/16rem);
+			height: (60/16rem);
 			/* margin-right auto pushes everything away from it to the right */
 			margin: 0 auto 0 0;
 			padding: 0;
@@ -1010,6 +1036,14 @@
 			}
 		}
 
+		.cs-ul-wrapper {
+			/* absolutely positioned to be dead center */
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+
 		.cs-ul {
 			width: 100%;
 			margin: 0;
@@ -1023,72 +1057,97 @@
 
 		.cs-li {
 			list-style: none;
-			padding: (32/16rem) 0;
+			padding: (36/16rem) 0;
 			/* prevent flexbox from squishing it */
 			flex: none;
 		}
 
 		.cs-li-link {
 			/* 14px - 16px */
-			font-size: clamp(0.875rem, 1vw, 1rem);
+			font-size: clamp(0.875rem, 0.6vw, 1rem);
 			line-height: 1.5em;
 			text-decoration: none;
 			margin: 0;
-			color: var(--bodyTextColor);
+			color: var(--bodyTextColorWhite);
 			display: block;
 			position: relative;
+			transition: color 0.3s;
+			font-weight: 700;
+
+			&:before {
+				content: "";
+				width: 0%;
+				height: 1px;
+				background: currentColor;
+				opacity: 1;
+				display: block;
+				position: absolute;
+				bottom: -2px;
+				left: 0;
+				transition: width 0.3s;
+			}
+
 			&:hover {
+				color: #fff;
 				&:before {
 					width: 100%;
 				}
 			}
 
 			&.cs-active {
+				color: #fff;
 				&:before {
 					width: 100%;
 				}
 			}
+		}
+
+		.cs-button-solid {
+			font-size: (16/16rem);
+			font-weight: 700;
+			/* 46px - 56px */
+			line-height: clamp(2.875em, 5.5vw, 3.5em);
+			text-align: center;
+			text-decoration: none;
+			min-width: (150/16rem);
+			margin: 0;
+			/* prevents padding from adding to the width */
+			box-sizing: border-box;
+			padding: 0 (32/16rem);
+			background-color: var(--primary);
+			color: #fff;
+			display: inline-block;
+			position: relative;
+			z-index: 1;
+			transition: color 0.3s;
 
 			&:before {
-				/* active state underline */
 				content: "";
 				width: 0%;
-				height: 2px;
-				background: var(--primary);
+				height: 100%;
+				background: #fff;
 				opacity: 1;
-				display: block;
 				position: absolute;
-				bottom: (0/16rem);
+				top: 0;
 				left: 0;
+				z-index: -1;
 				transition: width 0.3s;
 			}
-		}
-	}
-}
 
-/* Dark Mode */
-@media only screen and (min-width: 1024px) {
-	body.dark-mode {
-		#cs-navigation {
-			background-color: var(--dark);
-
-			.cs-logo {
-				/* makes it turn white */
-				filter: grayscale(1) brightness(1000%);
-			}
-
-			.cs-li-link {
-				color: var(--bodyTextColorWhite);
-			}
-
-			.cs-li-link {
+			&:hover {
+				color: #1a1a1a;
 				&:before {
-					background-color: var(--primaryLight);
+					width: 100%;
 				}
 			}
 		}
+
+		.cs-nav-button {
+			line-height: (46/16rem);
+		}
 	}
 }
+                                
 
 /*-- -------------------------- -->
 <---          Banner            -->

@@ -1,23 +1,23 @@
 module.exports = {
-    name: "Code Stitch Web Designs",
-    email: "help@codestitch.app",
-    phoneForTel: "555-779-4407",
-    phoneFormatted: "(555) 779-4407",
+    name: "Aroy Thai",
+    email: "info@aroythaiclacton.co.uk",
+    phoneForTel: "+447915195855",
+    phoneFormatted: "07915 195855",
     address: {
-        lineOne: "First Address Line",
-        lineTwo: "Second Address Line",
-        city: "Denver",
+        lineOne: "19 Rosemary Rd",
+        lineTwo: "",
+        city: "Clacton-on-Sea",
         state: "CO",
-        zip: "80206",
-        country: "US",
+        zip: "",
+        country: "UK",
         mapLink: "https://maps.app.goo.gl/TEdS5KoLC9ZcULuQ6",
     },
     socials: {
-        facebook: "https://www.facebook.com/",
-        instagram: "https://www.instagram.com/",
+        facebook: "",
+        instagram: "",
     },
     //! Make sure you include the file protocol (e.g. https://) and that NO TRAILING SLASH is included
-    domain: "https://www.example.com",
+    domain: "https://www.aroythaiclacton.co.uk",
     // Passing the isProduction variable for use in HTML templates
     isProduction: process.env.ELEVENTY_ENV === "PROD",
 };
