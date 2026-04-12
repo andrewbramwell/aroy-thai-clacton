@@ -13,14 +13,14 @@
 @media only screen and (min-width: 0px) {
 	/* All elements in the library derive their variables and base styles from this central sheet, simplifying site-wide edits. For instance, if you want to modify how your h2's appear across the site, you just update it once in the global styles, and the changes apply everywhere. */
 	:root {
-		--primary: #8C201E;
-		--primaryLight: #ffba43;
-		--secondary: #AB8756;
-		--secondaryLight: #ffba43;
+		--primary: #748B6D;
+		--primaryLight: #F2672A;
+		--secondary: #F2672A;
+		--secondaryLight: #F2672A;
 		--headerColor: #1a1a1a;
 		--bodyTextColor: #4e4b66;
 		--bodyTextColorWhite: #fafbfc;
-		--sectionColor: #f7f7f7;
+		--sectionColor: #F8F9F8;
 
 		/* Dark Mode Styles */
         --dark: #121212;
@@ -36,7 +36,7 @@
 		/* 60px - 100px top and bottom */
 		--sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;
 
-		--headerFont: "Gochi Hand", Arial, sans-serif;
+		--headerFont: "Jost", Arial, sans-serif;
 		--bodyFont: "Maven Pro", Arial, sans-serif;
 	}
 
@@ -83,8 +83,7 @@
 			content: "";
 			width: 100%;
 			height: 100%;
-			background-color: var(--secondary);
-			opacity: 0.1;
+			background-color: #E8EDE7;
 			border-radius: (100/16rem);
 			display: block;
 			position: absolute;
@@ -157,7 +156,7 @@
                 display: block;
                 height: 100%;
                 width: 0%;
-                background: #1a1a1a;
+                background: var(--secondary);
                 opacity: 1;
                 top: 0;
                 left: 0;
@@ -166,7 +165,7 @@
             }
 
             &:hover {
-                color: var(--primary);
+                color: #fff;
             }
 
             &:hover:before {
@@ -330,6 +329,22 @@
 		font-style: normal;
 		font-weight: 700;
 		src: url('/assets/fonts/maven-pro-v40-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+	}
+	/* jost-regular - latin */
+	@font-face {
+	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+	font-family: 'Jost';
+	font-style: normal;
+	font-weight: 400;
+	src: url('/assets/fonts/jost-v20-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+	}
+	/* jost-600 - latin */
+	@font-face {
+	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+	font-family: 'Jost';
+	font-style: normal;
+	font-weight: 600;
+	src: url('/assets/fonts/jost-v20-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 	}
 }
 
@@ -1102,45 +1117,7 @@
 			}
 		}
 
-		.cs-button-solid {
-			font-size: (16/16rem);
-			font-weight: 700;
-			/* 46px - 56px */
-			line-height: clamp(2.875em, 5.5vw, 3.5em);
-			text-align: center;
-			text-decoration: none;
-			min-width: (150/16rem);
-			margin: 0;
-			/* prevents padding from adding to the width */
-			box-sizing: border-box;
-			padding: 0 (32/16rem);
-			background-color: var(--primary);
-			color: #fff;
-			display: inline-block;
-			position: relative;
-			z-index: 1;
-			transition: color 0.3s;
-
-			&:before {
-				content: "";
-				width: 0%;
-				height: 100%;
-				background: #fff;
-				opacity: 1;
-				position: absolute;
-				top: 0;
-				left: 0;
-				z-index: -1;
-				transition: width 0.3s;
-			}
-
-			&:hover {
-				color: #1a1a1a;
-				&:before {
-					width: 100%;
-				}
-			}
-		}
+		
 
 		.cs-nav-button {
 			line-height: (46/16rem);

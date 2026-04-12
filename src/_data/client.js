@@ -3,14 +3,15 @@ module.exports = {
     email: "info@aroythaiclacton.co.uk",
     phoneForTel: "+447915195855",
     phoneFormatted: "07915 195855",
+    menuLink: "https://aroythaiclacton.resos.com/booking",
     address: {
         lineOne: "19 Rosemary Rd",
         lineTwo: "",
         city: "Clacton-on-Sea",
-        state: "CO",
-        zip: "",
+        state: "",
+        zip: "CO15 1NZ",
         country: "UK",
-        mapLink: "https://maps.app.goo.gl/TEdS5KoLC9ZcULuQ6",
+        mapLink: "https://maps.app.goo.gl/eABGTEHWqi9Abmaw5",
     },
     socials: {
         facebook: "",
