@@ -3,7 +3,7 @@ module.exports = {
     email: "info@aroythaiclacton.co.uk",
     phoneForTel: "+447915195855",
     phoneFormatted: "07915 195855",
-    menuLink: "https://aroythaiclacton.resos.com/booking",
+    menuLink: "https://aroythai.resos.com/booking",
     address: {
         lineOne: "19 Rosemary Rd",
         lineTwo: "",
