@@ -35,16 +35,22 @@
                     <!--Copy and paste this cs-dropdown list item and replace any .cs-li with this cs-dropdown group to make a new dropdown and it will work-->
                     <!-- Note: When copying this dropdown, update the id attribute with an appropriate name (e.g., "services-dropdown-toggle", "products-dropdown-toggle") and ensure the aria-labelledby attribute on the ul matches the button's id -->
                     <li class="cs-li cs-dropdown">
-                        <button class="cs-li-link cs-dropdown-toggle {% if page.url == "/project-one/" or page.url == "/project-two/" %} cs-active {% endif %}" aria-haspopup="menu" aria-expanded="false" id="projects-dropdown-toggle">
-                            Menus
+                        <button class="cs-li-link cs-dropdown-toggle {% if page.url == "/menu/" %} cs-active {% endif %}" aria-haspopup="menu" aria-expanded="false" id="projects-dropdown-toggle">
+                            Menu
                             <img class="cs-drop-icon" src="/assets/svgs/dropdown.svg" alt="" width="15" height="15" decoding="async" aria-hidden="true">
                         </button>
                         <ul class="cs-drop-ul" aria-labelledby="projects-dropdown-toggle">
                             <li class="cs-drop-li">
-                                <a href="https://assets.cdn.filesafe.space/eKn2BU8jmQy7brpTtqf0/media/69dba13a982fd67a358f3cb1.pdf" class="cs-li-link cs-drop-link">All Day Menu</a>
+                                <a href="/menu/" class="cs-li-link cs-drop-link {% if page.url == "/menu/" %} cs-active {% endif %}" {% if page.url == "/menu/" %} aria-current="page" {% endif %}>All Day Menu</a>
                             </li>
                             <li class="cs-drop-li">
-                                <a href="https://assets.cdn.filesafe.space/eKn2BU8jmQy7brpTtqf0/media/69dba11aa4e6aa34cbf802f9.pdf" class="cs-li-link cs-drop-link">Lunch Menu</a>
+                                <a href="https://assets.cdn.filesafe.space/eKn2BU8jmQy7brpTtqf0/media/69f5fd3a52d70cb766978a4e.pdf" class="cs-li-link cs-drop-link" target="_blank" rel="noopener">Lunch Menu</a>
+                            </li>
+                            <li class="cs-drop-li">
+                                <a href="https://assets.cdn.filesafe.space/eKn2BU8jmQy7brpTtqf0/media/69f5fd3a6b07ab330308076b.pdf" class="cs-li-link cs-drop-link" target="_blank" rel="noopener">Showcase Menu</a>
+                            </li>
+                            <li class="cs-drop-li">
+                                <a href="https://assets.cdn.filesafe.space/eKn2BU8jmQy7brpTtqf0/media/69f5fd3a6b07ab330308076a.pdf" class="cs-li-link cs-drop-link" target="_blank" rel="noopener">Takeaway Menu</a>
                             </li>
                         </ul>
                     </li>
