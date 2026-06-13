@@ -338,25 +338,16 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
 <!-- ============================================ -->
 <!--                    Popup                     -->
 <!-- ============================================ -->
-<!-- 
 <div id="cs-popup-overlay" role="dialog" aria-modal="true" aria-label="Special offer">
     <div id="cs-popup">
         <button id="cs-popup-close" aria-label="Close popup">&times;</button>
         <picture class="cs-popup-picture">
-            <img decoding="async" src="/assets/images/popup.jpg" alt="Special offer at Aroy Thai" width="480" height="320">
+            <img decoding="async" src="/assets/images/popup/popup.webp" alt="Special offer at Aroy Thai" width="1000" height="1000">
         </picture>
     </div>
 </div>
 
 <script>
-    const faqItems = Array.from(document.querySelectorAll('.cs-faq-item'));
-        for (const item of faqItems) {
-            const onClick = () => {
-            item.classList.toggle('active')
-        }
-        item.addEventListener('click', onClick)
-        }
-
     // Popup
     const overlay = document.getElementById('cs-popup-overlay');
     const closeBtn = document.getElementById('cs-popup-close');
@@ -378,6 +369,6 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') overlay.classList.remove('cs-active');
     });
-</script>-->
+</script>
                                 
 {% endblock %}
