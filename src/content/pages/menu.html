@@ -55,7 +55,9 @@ permalink: "/menu/"
                                 <li class="cs-item {% if item.image and item.image != menu.placeholderImage %}cs-item--with-image{% else %}cs-item--text-only{% endif %}">
                                     {% if item.image and item.image != menu.placeholderImage %}
                                     <picture class="cs-picture">
-                                        <img loading="lazy" decoding="async" src="{{ item.image }}" alt="{{ item.name }}" width="320" height="240">
+                                        <source srcset="{% getUrl item.image | resize({ width: 120, height: 120 }) | avif %} 1x, {% getUrl item.image | resize({ width: 240, height: 240 }) | avif %} 2x" type="image/avif">
+                                        <source srcset="{% getUrl item.image | resize({ width: 120, height: 120 }) | webp %} 1x, {% getUrl item.image | resize({ width: 240, height: 240 }) | webp %} 2x" type="image/webp">
+                                        <img loading="lazy" decoding="async" src="{% getUrl item.image | resize({ width: 240, height: 240 }) | webp %}" alt="{{ item.name }}" width="120" height="120">
                                     </picture>
                                     {% endif %}
                                     <div class="cs-info">
