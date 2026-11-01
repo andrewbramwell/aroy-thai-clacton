@@ -53,6 +53,49 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
 </section>
 
 <!-- ============================================ -->
+<!--                 Promotions                   -->
+<!-- ============================================ -->
+
+<!-- Slides, links and end dates are set in src/_data/promotions.js -->
+{% if promotions.active | length %}
+<section id="promotions" aria-roledescription="carousel" aria-label="Promotions">
+    <div class="cs-container">
+        <div class="cs-viewport">
+            <div class="cs-track">
+                {% for slide in promotions.active %}
+                    <div class="cs-slide" role="group" aria-roledescription="slide" aria-label="{{ loop.index }} of {{ loop.length }}" data-expires="{{ slide.expires }}" data-caption="{{ slide.caption }}"{% if not loop.first %} inert{% endif %}>
+                        <a href="{{ slide.link }}" class="cs-link">
+                            <img src="{{ slide.image }}" alt="{{ slide.alt }}" width="1920" height="720" decoding="async" {% if loop.first %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %}>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <!-- Arrows sit in this row on phones and over the banner from tablet up -->
+        <div class="cs-controls" hidden>
+            <button type="button" class="cs-play" aria-label="Pause promotions">
+                <svg class="cs-icon-pause" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M7 5h3v14H7zM14 5h3v14h-3z" fill="currentColor"/></svg>
+                <svg class="cs-icon-play" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+            </button>
+            <button type="button" class="cs-arrow cs-prev" aria-label="Previous promotion">
+                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="cs-dots">
+                {% for slide in promotions.active %}
+                    <button type="button" class="cs-dot" aria-label="Show promotion {{ loop.index }} of {{ loop.length }}"{% if loop.first %} aria-current="true"{% endif %}></button>
+                {% endfor %}
+            </div>
+            <button type="button" class="cs-arrow cs-next" aria-label="Next promotion">
+                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+        </div>
+        <p class="cs-caption" aria-live="off" aria-atomic="true">{{ promotions.active[0].caption }}</p>
+    </div>
+</section>
+<script defer src="/assets/js/promotions.js"></script>
+{% endif %}
+
+<!-- ============================================ -->
 <!--                Side By Side                  -->
 <!-- ============================================ -->
 

@@ -1487,3 +1487,268 @@
 }
                                 
                                 
+
+/*-- -------------------------- -->
+<---         Promotions         -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+    #promotions {
+        /* 40px - 64px top */
+        padding: clamp(2.5rem, 5vw, 4rem) (16/16rem) 0;
+
+        .cs-container {
+            width: 100%;
+            max-width: (1200/16rem);
+            margin: auto;
+        }
+
+        .cs-viewport {
+            width: 100%;
+            /* banners are 1920x720, so nothing is cropped and the space is reserved before they load */
+            aspect-ratio: 8 / 3;
+            overflow: hidden;
+            border-radius: (20/16rem);
+            position: relative;
+            background-color: var(--sectionColor);
+        }
+
+        .cs-track {
+            height: 100%;
+            display: flex;
+            transition: transform 0.5s ease;
+            /* lets the page scroll vertically while horizontal swipes go to the gallery */
+            touch-action: pan-y;
+        }
+
+        .cs-slide {
+            flex: 0 0 100%;
+            height: 100%;
+        }
+
+        .cs-link {
+            height: 100%;
+            display: block;
+
+            &:focus-visible {
+                outline: 3px solid #f1672a;
+                outline-offset: -3px;
+                border-radius: (20/16rem);
+            }
+        }
+
+        .cs-link img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: contain;
+        }
+
+        /* on phones the arrows sit in the controls row so they don't cover the banner text */
+        .cs-arrow {
+            width: (44/16rem);
+            height: (44/16rem);
+            padding: 0;
+            border: 2px solid #748b6d;
+            border-radius: 50%;
+            background-color: transparent;
+            color: #33402f;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: none;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+
+            &:hover {
+                background-color: #748b6d;
+                color: #fff;
+            }
+        }
+
+        .cs-controls {
+            margin-top: (12/16rem);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: (8/16rem);
+
+            &[hidden] {
+                display: none;
+            }
+        }
+
+        .cs-play {
+            width: (44/16rem);
+            height: (44/16rem);
+            padding: 0;
+            border: none;
+            border-radius: 50%;
+            background-color: #33402f;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+
+            &:hover {
+                background-color: #748b6d;
+            }
+
+            &[hidden] {
+                display: none;
+            }
+
+            .cs-icon-play {
+                display: none;
+            }
+
+            &.cs-paused {
+                .cs-icon-pause {
+                    display: none;
+                }
+
+                .cs-icon-play {
+                    display: block;
+                }
+            }
+        }
+
+        .cs-dots {
+            display: flex;
+            align-items: center;
+        }
+
+        .cs-dot {
+            /* 32px tap target around a 12px dot, so the whole row fits on a 360px phone */
+            width: (32/16rem);
+            height: (44/16rem);
+            padding: 0;
+            border: none;
+            background: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+
+            &:before {
+                content: "";
+                width: (12/16rem);
+                height: (12/16rem);
+                border-radius: 50%;
+                background-color: #748b6d;
+                transition: background-color 0.3s, transform 0.3s;
+            }
+
+            &:hover:before {
+                background-color: #33402f;
+            }
+
+            &[aria-current="true"]:before {
+                background-color: #f1672a;
+                transform: scale(1.25);
+            }
+        }
+
+        .cs-arrow,
+        .cs-play,
+        .cs-dot {
+            &:focus-visible {
+                outline: 3px solid #f1672a;
+                outline-offset: 2px;
+            }
+        }
+
+        .cs-caption {
+            /* 16px - 18px */
+            font-size: clamp(1rem, 4vw, 1.125rem);
+            font-weight: 700;
+            line-height: 1.4em;
+            text-align: center;
+            margin: (4/16rem) 0 0;
+            color: #33402f;
+        }
+    }
+}
+
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+    #promotions {
+        .cs-dot {
+            width: (44/16rem);
+        }
+
+        /* the banner text is readable at this size, so the caption is only needed on phones */
+        .cs-caption {
+            display: none;
+        }
+    }
+}
+
+/* Large Desktop - 1360px */
+@media only screen and (min-width: 85rem) {
+    #promotions {
+        .cs-container {
+            position: relative;
+        }
+
+        /* there's room either side of the 1200px banner, so the arrows move beside it (the banner text runs down its left edge, so they never sit on top) */
+        .cs-arrow {
+            position: absolute;
+            /* half the banner height: 1200px x 3/8 / 2 */
+            top: (225/16rem);
+            transform: translateY(-50%);
+        }
+
+        .cs-prev {
+            left: (-64/16rem);
+        }
+
+        .cs-next {
+            right: (-64/16rem);
+        }
+    }
+}
+
+/* Users who prefer less motion get an instant change instead of a slide */
+@media (prefers-reduced-motion: reduce) {
+    #promotions {
+        .cs-track,
+        .cs-dot:before {
+            transition: none;
+        }
+    }
+}
+
+/* Dark Mode */
+@media only screen and (min-width: 0rem) {
+    body.dark-mode {
+        #promotions {
+            .cs-viewport {
+                background-color: var(--medium);
+            }
+
+            .cs-dot:hover:before {
+                background-color: var(--bodyTextColorWhite);
+            }
+
+            .cs-caption {
+                color: var(--bodyTextColorWhite);
+            }
+        }
+    }
+}
+
+/* Dark Mode - phone arrows sit on the page background, tablet arrows sit on a white circle over the banner */
+@media only screen and (max-width: 47.9375rem) {
+    body.dark-mode {
+        #promotions {
+            .cs-arrow {
+                color: var(--bodyTextColorWhite);
+            }
+        }
+    }
+}
